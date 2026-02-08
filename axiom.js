@@ -1961,7 +1961,7 @@ module.exports = axiom = async (axiom, m, msg, store) => {
 				delete chat_ai[m.sender];
 			}
 			break
-			case '': {
+			case 'jadibot': {
 				if (!isPremium) return m.reply(mess.prem)
 				if (!isLimit) return m.reply(mess.limit)
 				const nmrnya = text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.sender
