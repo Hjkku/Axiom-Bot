@@ -237,7 +237,7 @@ This file is responsible for:
 │   ├── template_menu.js
 │   ├── tictactoe.js
 │   └── uploader.js
-├── naze.js
+├── axiom.js
 ├── nodemon.json
 ├── package.json
 ├── railway.json
@@ -275,18 +275,18 @@ This file is responsible for:
 
 License: [MIT](https://choosealicense.com/licenses/mit/)
 
-#### Support Me
-- [Saweria](https://saweria.co/naze)
-
 ## Contributor
 
 - [NazeDev](https://github.com/nazedev) (Pembuat)
 - [Zaynn](https://github.com/ZaynRcK) (Penyedia Layanan API)
 - [Dani](https://github.com/nazedev) (Penyumbang Code)
+- [Rangga](https://github.com/Hjkku)
+(Modif Kode)
 
 ## Thanks to
 
 | [![Nazedev](https://github.com/nazedev.png?size=100)](https://github.com/nazedev) | [![Zaynn](https://github.com/ZaynRcK.png?size=100)](https://github.com/ZaynRcK) | [![Dani](https://github.com/nazedev.png?size=100)](https://github.com/nazedev) | [![WhiskeySockets](https://github.com/WhiskeySockets.png?size=100)](https://github.com/WhiskeySockets) |
 | --- | --- | --- | --- |
 
-| [NazeDev](https://github.com/nazedev) | [Zaynn](https://github.com/ZaynRcK) | [Dani](https://github.com/dani) | [WhiskeySockets](https://github.com/WhiskeySockets) |
+| [NazeDev](https://github.com/nazedev) | [Zaynn](https://github.com/ZaynRcK) | [Dani](https://github.com/dani) | [WhiskeySockets](https://github.com/WhiskeySockets) | [Rangga](https://github.com/Hjkku)
+
