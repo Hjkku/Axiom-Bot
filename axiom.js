@@ -3121,7 +3121,7 @@ module.exports = axiom = async (axiom, m, msg, store) => {
 						return {X: '❌',O: '⭕',1: '1️⃣',2: '2️⃣',3: '3️⃣',4: '4️⃣',5: '5️⃣',6: '6️⃣',7: '7️⃣',8: '8️⃣',9: '9️⃣'}[v]
 					})
 					let str = `Room ID: ${room.id}\n\n${arr.slice(0, 3).join('')}\n${arr.slice(3, 6).join('')}\n${arr.slice(6).join('')}\n\nMenunggu @${room.game.currentTurn.split('@')[0]}\n\nKetik *nyerah* untuk menyerah dan mengakui kekalahan`
-					if (room.x !== room.o) await axiom.sendMessage(room.x, { texr: str, mentions: parseMention(str) }, { quoted: m })
+					if (room.x !== room.o) await axiom.sendMessage(room.x, { text: str, mentions: parseMention(str) }, { quoted: m })
 					await axiom.sendMessage(room.o, { text: str, mentions: parseMention(str) }, { quoted: m })
 				} else {
 					room = {
