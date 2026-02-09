@@ -2498,23 +2498,17 @@ break;
 			break
 			
 			// Ai Menu
-			case 'gemini': {
-    if (!text) return m.reply("Contoh: .gemini apa itu blackhole?")
+			case 'ai': case 'gemini': {
+    if (!text) return m.reply("Contoh: .ai siapa presiden indonesia?")
 
     try {
-        let res = await fetch("https://api.safone.dev/gpt", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                messages: [{ role: "user", content: text }]
-            })
-        })
+        let res = await fetch(`https://noxius.my.id/api/ai?text=${encodeURIComponent(text)}`);
+        let out = await res.json();
 
-        let out = await res.json()
-        m.reply(out.result || "Ga dapat jawaban.")
+        m.reply(out.result || "Tidak ada jawaban.")
     } catch (e) {
-        console.log(e)
-        m.reply("AI sedang error.")
+        console.log("AI ERROR:", e)
+        m.reply("AI sedang bermasalah!")
     }
 }
 break
