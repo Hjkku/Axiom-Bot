@@ -2498,16 +2498,21 @@ break;
 			break
 			
 			// Ai Menu
-			case 'ai': case 'google': case 'bard': case 'gemini': {
-				if (!text) return m.reply(`Example: ${prefix + command} query`)
-				try {
-					let hasil = await fetchApi('/ai/gemini-flash-lite', { query: text });
-					m.reply(hasil.result.text)
-				} catch (e) {
-					m.reply(pickRandom(['Fitur Ai sedang bermasalah!','Tidak dapat terhubung ke ai!','Sistem Ai sedang sibuk sekarang!','Fitur sedang tidak dapat digunakan!']))
-				}
-			}
-			break
+			case 'gemini': {
+    if (!text) return m.reply(`Example: ${prefix + command} query`)
+
+    try {
+        let url = `https://widipe.com/gemini?text=${encodeURIComponent(text)}`
+        let res = await fetch(url)
+        let json = await res.json()
+
+        m.reply(json.result)
+    } catch (e) {
+        console.log("GEMINI ERROR:", e)
+        m.reply("AI Gemini sedang bermasalah!")
+    }
+}
+break
 			
 			// Search Menu
 			case 'gimage': case 'bingimg': {
