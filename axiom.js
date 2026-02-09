@@ -2497,23 +2497,7 @@ break;
 			}
 			break
 			
-			// Ai Menu
-			case 'ai': case 'gemini': {
-    if (!text) return m.reply("Contoh: .ai siapa presiden indonesia?")
-
-    try {
-        let res = await fetch(`https://noxius.my.id/api/ai?text=${encodeURIComponent(text)}`);
-        let out = await res.json();
-
-        m.reply(out.result || "Tidak ada jawaban.")
-    } catch (e) {
-        console.log("AI ERROR:", e)
-        m.reply("AI sedang bermasalah!")
-    }
-}
-break
-			
-			// Search Menu
+						// Search Menu
 			case 'gimage': case 'bingimg': {
 				if (!text) return m.reply(`Example: ${prefix + command} query`)
 				try {
@@ -3937,11 +3921,6 @@ break
 │${setv} ${prefix}nightcore (reply audio)
 │${setv} ${prefix}getexif (reply sticker)
 ╰─┬────❍
-╭─┴❍「 *AI* 」❍
-│${setv} ${prefix}ai (query)
-│${setv} ${prefix}gemini (query)
-│${setv} ${prefix}txt2img (query)
-╰─┬────❍
 ╭─┴❍「 *ANIME* 」❍
 │${setv} ${prefix}waifu
 │${setv} ${prefix}neko
@@ -4227,15 +4206,6 @@ break
 │${setv} ${prefix}earrape (reply audio)
 │${setv} ${prefix}nightcore (reply audio)
 │${setv} ${prefix}getexif (reply sticker)
-╰──────❍`)
-			}
-			break
-			case 'aimenu': {
-				m.reply(`
-╭──❍「 *AI* 」❍
-│${setv} ${prefix}ai (query)
-│${setv} ${prefix}gemini (query)
-│${setv} ${prefix}txt2img (query)
 ╰──────❍`)
 			}
 			break
