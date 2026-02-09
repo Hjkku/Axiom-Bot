@@ -2167,24 +2167,21 @@ module.exports = axiom = async (axiom, m, msg, store) => {
         if (!isPremium) return m.reply(mess.prem)
         if (!text) return m.reply(`Example: ${prefix + command} https://youtube.com`)
 
-        try {
-          let url = text.startsWith("http") ? text : `https://${text}`
-
-        // API screenshot stabil → thum.io
+         try {
+         let url = text.startsWith("http") ? text : `https://${text}`
          let ssurl = `https://image.thum.io/get/fullpage/${encodeURIComponent(url)}`
-        
+
           await axiom.sendMessage(
-            m.chat,
-            { image: { url: ssurl }, caption: "Done ✓" },
-            { quoted: m }
-            )
-            setLimit(m, db)
-          
-        } catch (e) {
-        console.log("SSWEB ERROR:", e)
-        m.reply('Gagal mengambil screenshot!')
-        }
-			}
+              m.chat,
+             { image: { url: ssurl }, caption: "Done ✓" },
+             { quoted: m }
+          )
+              setLimit(m, db)
+          } catch (e) {
+             console.log("SSWEB ERROR:", e)
+             m.reply('Gagal mengambil screenshot!')
+          }
+      }
       break
 			case 'readmore': {
 				let teks1 = text.split`|`[0] ? text.split`|`[0] : ''
