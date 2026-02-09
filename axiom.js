@@ -2498,18 +2498,28 @@ break;
 			break
 			
 			// Ai Menu
-			case 'gemini': {
-    if (!text) return m.reply(`Example: ${prefix + command} query`)
+			case 'ai': case 'gemini': case 'google': {
+    if (!text) return m.reply(`Contoh: .ai siapa presiden indonesia`)
 
     try {
-        let url = `https://widipe.com/gemini?text=${encodeURIComponent(text)}`
-        let res = await fetch(url)
-        let json = await res.json()
+        let res = await fetch("https://api.huggingface.co/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                model: "mistralai/Mistral-Nemo-Instruct-2407",
+                messages: [
+                    { role: "user", content: text }
+                ]
+            })
+        });
 
-        m.reply(json.result)
+        let json = await res.json();
+        m.reply(json.choices?.[0]?.message?.content || "Gagal mendapatkan jawaban.");
     } catch (e) {
-        console.log("GEMINI ERROR:", e)
-        m.reply("AI Gemini sedang bermasalah!")
+        console.log("AI ERROR:", e)
+        m.reply("AI sedang error!")
     }
 }
 break
