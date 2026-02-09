@@ -2167,23 +2167,34 @@ module.exports = axiom = async (axiom, m, msg, store) => {
     if (!text) return m.reply(`Contoh:\n${prefix + command} https://youtube.com`)
 
     try {
-        let url = text.startsWith("http") ? text : `https://${text}`
+        let url = text.startsWith("http") ? text : `https://${text}`;
 
-        // API Microlink.io (lebih stabil daripada Thum.io)
-        let api = `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false`
+        // 1. Ambil data JSON dari Microlink
+        let res = await axios.get(
+            `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false`
+        );
 
+        if (!res.data?.data?.screenshot?.url) 
+            return m.reply("Gagal mengambil screenshot!");
+
+        // 2. Download gambar-nya sebagai buffer
+        let img = await axios.get(res.data.data.screenshot.url, {
+            responseType: "arraybuffer"
+        });
+
+        // 3. Kirim buffer ke WA
         await axiom.sendMessage(
             m.chat,
-            { image: { url: api }, caption: "Screenshot berhasil ✓" },
+            { image: img.data, caption: "Screenshot berhasil ✓" },
             { quoted: m }
-        )
+        );
 
     } catch (err) {
-        console.log("SSWEB ERROR:", err)
-        m.reply("Gagal mengambil screenshot web!")
+        console.log("SSWEB ERROR:", err);
+        m.reply("Gagal mengambil screenshot web!");
     }
 }
-break
+break;
 			case 'readmore': {
 				let teks1 = text.split`|`[0] ? text.split`|`[0] : ''
 				let teks2 = text.split`|`[1] ? text.split`|`[1] : ''
