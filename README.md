@@ -31,8 +31,8 @@ System dependencies (handled automatically by `install.sh`):
 ## 🚀 Installation
 ### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/nazedev/hitori
-cd hitori
+git clone https://github.com/Hjkku/Axiom-Bot
+cd Axiom-Bot
 ```
 ---
 ### 2️⃣ Automatic Installation (Recommended)
@@ -289,4 +289,5 @@ License: [MIT](https://choosealicense.com/licenses/mit/)
 | --- | --- | --- | --- |
 
 | [NazeDev](https://github.com/nazedev) | [Zaynn](https://github.com/ZaynRcK) | [Dani](https://github.com/dani) | [WhiskeySockets](https://github.com/WhiskeySockets) | [Rangga](https://github.com/Hjkku)
+
 
