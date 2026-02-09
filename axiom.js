@@ -2498,28 +2498,23 @@ break;
 			break
 			
 			// Ai Menu
-			case 'ai': case 'gemini': case 'google': {
-    if (!text) return m.reply(`Contoh: .ai siapa presiden indonesia`)
+			case 'gemini': {
+    if (!text) return m.reply("Contoh: .gemini apa itu blackhole?")
 
     try {
-        let res = await fetch("https://api.huggingface.co/chat/completions", {
+        let res = await fetch("https://api.safone.dev/gpt", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                model: "mistralai/Mistral-Nemo-Instruct-2407",
-                messages: [
-                    { role: "user", content: text }
-                ]
+                messages: [{ role: "user", content: text }]
             })
-        });
+        })
 
-        let json = await res.json();
-        m.reply(json.choices?.[0]?.message?.content || "Gagal mendapatkan jawaban.");
+        let out = await res.json()
+        m.reply(out.result || "Ga dapat jawaban.")
     } catch (e) {
-        console.log("AI ERROR:", e)
-        m.reply("AI sedang error!")
+        console.log(e)
+        m.reply("AI sedang error.")
     }
 }
 break
