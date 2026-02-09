@@ -2164,26 +2164,23 @@ module.exports = axiom = async (axiom, m, msg, store) => {
 			}
 			break
 			case 'ssweb': {
-    if (!isPremium) return m.reply(mess.prem)
-    if (!text) return m.reply(`Example: ${prefix + command} https://youtube.com`)
+    if (!text) return m.reply(`Contoh:\n${prefix + command} https://youtube.com`)
 
     try {
         let url = text.startsWith("http") ? text : `https://${text}`
 
-        // THUM.IO METHOD
-        let ssurl = `https://image.thum.io/get/${url}`
+        // API Microlink.io (lebih stabil daripada Thum.io)
+        let api = `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false`
 
         await axiom.sendMessage(
             m.chat,
-            { image: { url: ssurl }, caption: "Screenshot berhasil ✓" },
+            { image: { url: api }, caption: "Screenshot berhasil ✓" },
             { quoted: m }
         )
 
-        setLimit(m, db)
-
-    } catch (e) {
-        console.log("SSWEB ERROR:", e)
-        return m.reply("Gagal mengambil screenshot web!")
+    } catch (err) {
+        console.log("SSWEB ERROR:", err)
+        m.reply("Gagal mengambil screenshot web!")
     }
 }
 break
